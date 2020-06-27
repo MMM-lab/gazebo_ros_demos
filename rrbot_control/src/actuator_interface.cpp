@@ -1,6 +1,8 @@
 #include "ros/ros.h"
 #include "std_msgs/Float64.h"
 
+#include <string>
+
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "talker");
@@ -18,8 +20,8 @@ int main(int argc, char **argv)
     std_msgs::Float64 joint1_torque;
     std_msgs::Float64 joint2_torque;
 
-    joint1_torque.data = -0;
-    joint2_torque.data = -2;
+    joint1_torque.data = std::stof(argv[1]);
+    joint2_torque.data = std::stof(argv[2]);
 
     ROS_INFO("%f", joint1_torque.data);
     ROS_INFO("%f", joint2_torque.data);
